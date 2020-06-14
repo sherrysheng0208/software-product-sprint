@@ -14,6 +14,7 @@
 
 package com.google.sps.servlets;
 
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,7 @@ import javax.servlet.http.HttpServletResponse;
 public class DataServlet extends HttpServlet {
 
 private List<String> quotes;
+private ArrayList<String> messages;
 
   @Override
   public void init() {
@@ -52,8 +54,23 @@ private List<String> quotes;
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("text/html;");
     response.getWriter().println("<h1>Hello Shengjing Zhang!</h1>");
+
     String quote = quotes.get((int) (Math.random() * quotes.size()));
     response.getWriter().println(quote);
+
+    // Convert the Arraylist to JSON
+    messages = new ArrayList<>();
+    messages.add("Good morning!");
+    messages.add("Good afternoon!");
+    messages.add("Good night!");
+
+    //ServerStats serverStats = new ServerStats(messages.get(0), messages.get(1), messages.get(2));
+    Gson gson = new Gson();
+    String json = gson.toJson(messages);
+
+    // Send the JSON as the response
+    response.setContentType("application/json;");
+    response.getWriter().println(json);
   }
 }
 

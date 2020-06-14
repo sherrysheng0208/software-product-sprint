@@ -32,3 +32,10 @@ function getRandomQuoteUsingArrowFunctions() {
     document.getElementById('quote-container').innerText = quote;
   });
 }
+
+function getJsonMessage() {
+  fetch('/data').then(response => response.json()).then((msg) => {
+    document.getElementById('json-container').innerText = msg;
+  });
+}
+
