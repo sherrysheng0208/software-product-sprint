@@ -10,13 +10,18 @@
     <div id="content">
       <h1>Shengjing Zhang's Portfolio</h1>
       <p>Welcome to my portfolio</p>
-      <p>Click here to get a random quote:</p>
-      <button onclick="getRandomQuoteUsingArrowFunctions()">Fetch a quote!</button>
-      <div id="quote-container"></div>
-
+      
       <p>Click here to see a greeting message:</p>
       <button onclick="getJsonMessage()">Fetch Json message!</button>
-      <ul id="json-container"></ul>
+      <div id="json-container"></div>
+
+      <h1 id="comment"></h1>
+      <form action="/data" method="POST">
+        <p>Enter your comment:</p>
+        <textarea name="comment-input"></textarea>
+        <br/><br/>
+        <input type="submit" />
+      </form>
 
       <p>My name is Shengjing.</p>
       <img src="images/selfie.jpg"/>
